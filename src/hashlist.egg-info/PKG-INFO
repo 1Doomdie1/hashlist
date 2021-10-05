@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: hashlist
-Version: 0.0.5
+Version: 0.0.6
 Summary: Easy way to create and manage hash lists
 Home-page: https://github.com/1Doomdie1/hashlist
 Author: Doomdie
@@ -9,7 +9,9 @@ License: UNKNOWN
 Platform: UNKNOWN
 Classifier: Programming Language :: Python :: 3
 Classifier: License :: OSI Approved :: MIT License
-Classifier: Operating System :: OS Independent
+Classifier: Operating System :: Unix
+Classifier: Operating System :: MacOS :: MacOS X
+Classifier: Operating System :: Microsoft :: Windows
 Requires-Python: >=3.6
 Description-Content-Type: text/markdown
 License-File: LICENSE

@@ -21,7 +21,19 @@ This package is meant to store data in a smart way so when you are dealing with 
 	- Prints the hashed list object contents.
 ## Usage
 
-Let's create an instance of the class and add some items and print the hash list:
+- To get this module you can install it by using pip as follows:
+
+```bash
+pip install hashlist
+```
+
+- If you have hashlist installed update it form time to time using this command:
+
+```bash
+pip install --upgrade hashlist
+```
+
+- Once you have your module installed let's create an instance of the class and add some items and print the hash list:
 
 ```python
 from hashlist import hast_list
@@ -40,8 +52,8 @@ h_lst.add('test', 'my', 'python', 'hashed', 'list')
 
 ```python
 def __key__(self, word):
-		key = sum([ord(letter) for letter in word])//len(word)
-		return key
+	key = sum([ord(letter) for letter in word])//len(word)
+	return key
 ```
 
 - You can see all the public methods that the class offers by running this code:
