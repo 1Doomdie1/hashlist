@@ -40,8 +40,8 @@ h_lst.add('test', 'my', 'python', 'hashed', 'list')
 
 ```python
 def __key__(self, word):
-		key = sum([ord(letter) for letter in word])//len(word)
-		return key
+	key = sum([ord(letter) for letter in word])//len(word)
+	return key
 ```
 
 - You can see all the public methods that the class offers by running this code:
