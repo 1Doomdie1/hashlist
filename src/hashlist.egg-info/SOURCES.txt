@@ -1,0 +1,10 @@
+LICENSE
+README.md
+pyproject.toml
+setup.cfg
+src/hashlist/__init__.py
+src/hashlist/hash_list.py
+src/hashlist.egg-info/PKG-INFO
+src/hashlist.egg-info/SOURCES.txt
+src/hashlist.egg-info/dependency_links.txt
+src/hashlist.egg-info/top_level.txt
