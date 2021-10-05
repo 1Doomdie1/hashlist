@@ -27,7 +27,7 @@ This package is meant to store data in a smart way so when you are dealing with 
 pip install hashlist
 ```
 
-- If you have hashlist installed update it form time to time using this command:
+- If you have hashlist installed update it from time to time using this command:
 
 ```bash
 pip install --upgrade hashlist
