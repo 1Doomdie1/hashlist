@@ -166,7 +166,7 @@ h_lst.print() # hash list after removing an item
 ```
 
 - If you can see the class automatically deletes the entire key if there is no value associate with it. In this case the word 'my' had the key 115 but because we removed the item the key has no value associate with it so the class deletes the key.
-- You can remove an item by using it's (key, index) by using remove_item_by_key() method:
+- You can remove an item by using it's (key, index) by using remove_item_by_index() method:
 ```python
 from hashlist import hast_list
 
