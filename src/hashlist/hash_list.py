@@ -36,7 +36,7 @@ class hash_list():
         try:
             self.hash_list[index[0]].pop(index[1])
             if len(self.hash_list[index[0]]) == 0:
-                self.delete_index(index[0])
+                self.delete_key(index[0])
         except Exception:
             raise Exception('Index out of  bound.')
 
@@ -44,10 +44,10 @@ class hash_list():
         index = self.get_item_index(item)
         self.remove_item_by_index(index)
 
-    def delete_index(self, index):
-        self.hash_list.pop(index)
+    def delete_key(self, key):
+        self.hash_list.pop(key)
 
-    def indexes(self):
+    def keys(self):
         ind = [index for index in self.hash_list.keys()]
         return ind
 

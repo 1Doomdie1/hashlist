@@ -7,18 +7,22 @@ This package is meant to store data in a smart way so when you are dealing with 
 
 - add(args*)
   - Can add multiple elements at a time into the hash list object
-- get_item(item=None, index=None)
-  - If used with the item argument the object will return a tuple of (key, index)
-  - if used with the index argument the object will return the item
-- indexes()
-  - The method returns a list of all the keys in the hashed list
-- remove_item(item=None, index=None)
-  - Removes an item form the hashed list either by it's 'name' or by the index. Note that the index should be a tuple of (key, index). 
-  - Use the get_item(item=<item_name>) to get the index 
-- delete_index(index)
+- get_item_index(item)
+  - Returns a tuple of form (key, index)
+- get_item_by_index(index)
+  - Returns the item by providing the index (key, index)
+- remove_item_by_index(index=None)
+  - Removes an item form the hashed list either by it's index. Note that the index should be a tuple of (key, index). 
+- remove_item_by_name(item)
+  - Removes the item by it's 'name'.
+- delete_key(key)
 	- The method deletes a key and all the items associated with it. Be careful how you use this method in your code. The index argument expects an integer (int).
+- keys()
+  - The method returns a list of all the keys in the hashed list
 - print()
 	- Prints the hashed list object contents.
+
+
 ## Usage
 
 - To get this module you can install it by using pip as follows:
@@ -37,6 +41,7 @@ pip install --upgrade hashlist
 
 ```python
 from hashlist import hast_list
+
 h_lst = hast_list()
 h_lst.add('test', 'my', 'python', 'hashed', 'list')
 
@@ -52,33 +57,37 @@ h_lst.add('test', 'my', 'python', 'hashed', 'list')
 
 ```python
 def __key__(self, word):
-	key = sum([ord(letter) for letter in word])//len(word)
-	return key
+    if word:
+        key = sum([ord(letter) for letter in word])//len(word)
+        return key
+    raise Exception('Argument can not be None')
 ```
 
 - You can see all the public methods that the class offers by running this code:
 
 ```python
 from hashlist import hast_list
-method_list = [method for method in dir(MyClass) if method.startswith('__') is False]
+
+method_list = [method for method in dir(hash_list) if method.startswith('_') is False]
 print(method_list)
 
 '''
 > Output:
-> ['add', 'delete_index', 'get_item', 'indexes', 'print', 'remove_item']
+> ['add', 'delete_index', 'get_item_by_index', 'get_item_index', 'indexes', 'print', 'remove_item_by_index', 'remove_item_by_name']
 '''
 ```
 
-- Ok, great! Now let's use some of those methods. let's start with get_item() method.
-- get_item(item=None, index=None) will return a tuple of values. The first value in
+- Ok, great! Now let's use some of those methods. let's start with get_item_index() method.
+- get_item_index(index) will return a tuple of values. The first value in
 the tuple is the item's key and the second value will represent the position of the
 item in the array:
 
 ```python
 from hashlist import hast_list
+
 h_lst = hast_list()
 h_lst.add('test', 'my', 'python', 'hashed', 'list')
-item = h_lst.get_item(item='my')
+item = h_lst.get_item_index('my')
 print(item)
 
 '''
@@ -87,13 +96,14 @@ print(item)
 '''
 ```
 
-- But what if you want to get the actual item (in this case the word). Well we can use the get_item() method but towice:
+- But what if you want to get the actual item (in this case the word). Well we can use the get_item_index() and get_item_by_index():
 ```python
 from hashlist import hast_list
+
 h_lst = hast_list()
 h_lst.add('test', 'my', 'python', 'hashed', 'list')
-index= h_lst.get_item(item='my')
-item = h_lst.get_item(index=index)
+index= h_lst.get_item_index('my')
+item = h_lst.get_item_by_index(index)
 print(index)
 print(item)
 '''
@@ -103,13 +113,14 @@ print(item)
 '''
 ```
 
-- Now let's use the indexes() method. This method return a list of all the keys that are in your hash list
+- Now let's use the keys() method. This method return a list of all the keys that are in your hash list
 ```python
 from hashlist import hast_list
+
 h_lst = hast_list()
 h_lst.add('test', 'my', 'python', 'hashed', 'list')
-all_indexes = h_lst.indexes()
-print(all_indexes)
+all_keys = h_lst.keys()
+print(all_keys)
 
 '''
 > Output:
@@ -117,14 +128,15 @@ print(all_indexes)
 '''
 ```
 
-- Perfect, there are 2 more methods from this class, delete_index() and remove_item(). Let's focus on delete_index(). This method will delete a key form your hash list and all of it's items. Be very careful how you use it:
+- You can use the delete_key() method to delete a key from the hash list. 
 ```python
 from hashlist import hast_list
+
 h_lst = hast_list()
 h_lst.add('test', 'my', 'python', 'hashed', 'list')
-index = h_lst.indexes()[0]
+key = h_lst.keys()[0]
 h_lst.print()
-h_lst.delete_index(index)
+h_lst.delete_key(key)
 h_lst.print()
 
 '''
@@ -134,14 +146,15 @@ h_lst.print()
 '''
 ```
 
-- And finally we have remove_item(item=None, index=None). This method can delete an item from the hash list either by it's 'name' or by it's index. Let's show them both.
-- Removing an item by it's 'name':
+
+- If you want to delete an item from the hash list but you don't know it's (key, index) you can use the remove_item_by_name()
 ```python
 from hashlist import hast_list
+
 h_lst = hast_list()
 h_lst.add('test', 'my', 'python', 'hashed', 'list')
 h_lst.print() # hash list before removing an item
-h_lst.remove_item(item='my')
+h_lst.remove_item_by_name('my')
 h_lst.print() # hash list after removing an item
 
 '''
@@ -152,15 +165,16 @@ h_lst.print() # hash list after removing an item
 ```
 
 - If you can see the class automatically deletes the entire key if there is no value associate with it. In this case the word 'my' had the key 115 but because we removed the item the key has no value associate with it so the class deletes the key.
-- Removing an item by it's index:
+- You can remove an item by using it's (key, index) by using remove_item_by_key() method:
 ```python
 from hashlist import hast_list
+
 h_lst = hast_list()
 h_lst.add('test', 'my', 'python', 'hashed', 'list')
 h_lst.print() # hash list before removing an item
-index = h_lst.get_item(item='test')
+index = h_lst.get_item_index('test')
 print(index)
-h_lst.remove_item(index=index)
+h_lst.remove_item_by_index(index)
 h_lst.print() # hash list after removing an item
 
 '''
