@@ -58,5 +58,3 @@ class hash_list():
 
     def print(self):
         print(self.hash_list)
-
-
