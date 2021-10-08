@@ -7,7 +7,7 @@ class hash_list():
     def add(self, *args):
         if args:
             for item in args:
-                key = self._key_(item)
+                key = self._key(item)
                 if self.hash_list.get(key):
                     self.hash_list[key].append(item)
                 else:
@@ -16,7 +16,7 @@ class hash_list():
             raise TypeError('No arguments passed.')
 
     def get_item_index(self, item):
-        key = self._key_(item)
+        key = self._key(item)
         if self.hash_list.get(key):
             items_lst = self.hash_list[key]
             if item in items_lst:
