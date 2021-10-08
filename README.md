@@ -11,7 +11,7 @@ This package is meant to store data in a smart way so when you are dealing with 
   - Returns a tuple of form (key, index)
 - get_item_by_index(index)
   - Returns the item by providing the index (key, index)
-- remove_item_by_index(index=None)
+- remove_item_by_index(index)
   - Removes an item form the hashed list either by it's index. Note that the index should be a tuple of (key, index). 
 - remove_item_by_name(item)
   - Removes the item by it's 'name'.
