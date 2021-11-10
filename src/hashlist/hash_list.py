@@ -34,7 +34,7 @@ class hash_list():
     def remove_item_by_index(self, index):
         try:
             self.hash_list[index[0]].pop(index[1])
-            if len(self.hash_list[index[0]]) == 0:
+            if self.hash_list[index[0]]:
                 self.delete_key(index[0])
         except LookupError:
             raise LookupError('Index out of bound.')
