@@ -57,11 +57,11 @@ h_lst.add('test', 'my', 'python', 'hashed', 'list')
 - The key, for now, is calculated by adding the ASCII values of the letters from the word and dividing the sum to the length of the word:
 
 ```python
-def __key__(self, word):
+def _key(self, word):
     if word:
         key = sum([ord(letter) for letter in word])//len(word)
         return key
-    raise Exception('Argument can not be None')
+    raise TypeError('Argument can not be None')
 ```
 
 - You can see all the public methods that the class offers by running this code:
